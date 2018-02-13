@@ -1,0 +1,35 @@
+# 特定のファイルタイプで読み込む
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+# インサートモード時に読み込み
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+# unite.vim読み込み時
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = ['unite.vim']
+
+
+# 特定のコマンド実行時
+[[plugins]]
+repo = 'thinca/vim-prettyprint'
+on_cmd = ['PP', 'PrettyPrint']
+
+# 特定のマッピング使ったら読み込む
+# また、gvimでしか利用しない
+[[plugins]]
+repo = 'thinca/vim-fontzoom'
+on_cmd = ['Fontzoom']
+on_map = ['<Plug>(fontzoom-']
+gui    = 1
