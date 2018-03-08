@@ -111,3 +111,10 @@ nnoremap ; :
 
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR> " ESCキー連打でハイライトを消す
 
+
+" php
+augroup PHP_SyntaxCheck
+  autocmd!
+  autocmd FileType php set makeprg=php\ -l\ %
+  autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copne | else | cclose | endif | redraw!
+augroup END
