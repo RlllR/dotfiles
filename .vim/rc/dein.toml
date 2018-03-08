@@ -83,6 +83,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+hook_add = '''
+    let g:NERDTreeShowHidden = 1
+    let g:NERDTreeShowBookmards = 1
+    let file_name = expand("%:p")
+    nnoremap <slient><C-e> : NERDTreeToggle<CR>
+'''
 
 # シンタックスチェック系
 [[plugins]] # toml syntax

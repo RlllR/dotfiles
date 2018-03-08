@@ -38,7 +38,7 @@ endif
 
 
 
-set mouse=a
+set mouse=
 set scrolloff=3
 
 " tab
@@ -73,13 +73,14 @@ set t_Co=256        " ターミナル：ターミナルで256色表示
 
 "colorscheme badwolf
 set nowrap " テキスト折り返しなし
-set laststatus=2 " 株ステータスラインを常に表示
+set laststatus=2 " 下部ステータスラインを常に表示
 
 " SpellCheck
 set spell
 set spelllang=en,cjk " 日本語を除外
 
 " other
+set backspace=indent,eol,start
 set pumheight=10 " 変換候補で一度に表示される数
 set encoding=utf-8 " 文字コード
 set fileencoding=utf-8
