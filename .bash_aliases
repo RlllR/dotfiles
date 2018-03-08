@@ -28,3 +28,10 @@ alias ...='cd ../..'
 # reload
 alias relogin='exec $SHELL -l'
 alias re=relogin
+
+# git
+alias g='git'
+alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 |sed -e "sed/^\*/s*//g"`'
+alias -g H='`curl -sL https://api.github.com/users/USER_NAME/repos | jq -r ".[].full_name" | peco --prompt "GITHUB REPOS>" | head -n 1`'
+alias -g LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/(\S*\)/\1 \0/"`'
+

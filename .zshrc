@@ -813,3 +813,42 @@ reload() {
 }
 
 # vim:fdm=marker fdc=3 ft=zsh ts=4 sw=4 sts=4:
+
+
+# alias g='git'
+# alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 |sed -e "sed/^\*/s*//g"`'
+# alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
+# alias -g H='`curl -sL https://api.github.com/users/USER_NAME/repos | jq -r ".[].full_name" | peco --prompt "GITHUB REPOS>" | head -n 1`'
+# alias -g LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/(\S*\)/\1 \0/"`'
+# alias -g P='| peco'
+#
+#
+# # for go lang
+# if [ -x "`which go`" ]; then
+#     export GOROOT=/mingw64/lib/go
+#     export GOPATH=/mingw64
+#     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+#
+#     alias ll='ls -la | peco'
+#     alias tp='top | peco'
+#     alias pp='ps aux | peco'
+# fi
+#
+#
+# # history filter
+# function peco-select-history() {
+#   local tac
+#   if which tac > /dev/null; then
+#       tac="tac"
+#   else
+#       tac="tail -r"
+#   fi
+#   BUFFER=$(\history -n 1 | \
+#     eval $tac | \
+#     peco --query "$LBUFFER")
+#   CURSOR=$#BUFFER
+#   zle clear-screen
+# }
+#
+# zle -N peco-select-history
+# bindkey '^[x' peco-select-history # M-x に割当
