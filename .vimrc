@@ -57,6 +57,12 @@ set hlsearch      " 検索結果をはハイライト
 
 " autocmd
 autocmd BufWritePre * :%s/\s\+$//ge " 行末の余分なスペースを取り除く
+" autocmd ColorScheme
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
+autocmd ColorScheme * highlight Folded ctermbg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
 " visual
 syntax on
@@ -70,10 +76,8 @@ set matchtime=1     " カーソル：カーソルが飛ぶ時間を0.1秒で
 set whichwrap=b,s,h,l,<,>,[,]
 set ttyfast         " ターミナル：ターミナル接続を高速にする
 set t_Co=256        " ターミナル：ターミナルで256色表示
-
-"colorscheme badwolf
-set nowrap " テキスト折り返しなし
-set laststatus=2 " 下部ステータスラインを常に表示
+set nowrap          " テキスト折り返しなし
+set laststatus=2    " 下部ステータスラインを常に表示
 
 " SpellCheck
 set spell

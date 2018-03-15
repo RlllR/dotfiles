@@ -44,7 +44,7 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
-repo    = 'osyo-manga/vim-watchdogs'
+repo = 'osyo-manga/vim-watchdogs'
 depends = [
   'vim-hier',
   'quickfixstatus',
@@ -53,19 +53,48 @@ depends = [
 ]
 on_event = ['FocusLost', 'CursorHold']
 hook_add = '''
+    let g:watchdogs_check_BufWritePost_enable = 0
+    let g:watchdogs_check_CursorHold_enable = 0
+    let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+
 	let g:quickrun_config = get(g:, 'quickrun_config', {})
-	let g:quickrun_config['watchdogs_checker/_'] = {'outputter/quickfix/open_cmd': ''}
+	let g:quickrun_config['watchdogs_checker/_'] = {
+        \ 'outputter/quickfix/open_cmd': '',
+        \ 'hook/qfsigns_update/enable_exit': 1,
+        \ 'hook/qfsigns_update/priority_exit': 3
+        \ }
+    let phpcs_command = "phpcs"
+    if executable(phpcs_command)
+        let error_format =
+            \ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
+            \ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#'
+
+        let g:quickrun_config["watchdogs_checker/phpcs"] = {
+            \ "quickfix/errorformat": error_format,
+            \ "command" : phpcs_command,
+            \ "cmdopt" : "--report=csv --standard=ruleset.xml",
+            \ "exec" : '%c %o %s:p',
+            \ }
+
+        unlet phpcs_command
+        unlet error_format
+
+        let g:quickrun_config["php/watchdogs_checker"] = {
+            \ "type" : "watchdogs_checker/phpcs",
+            \ }
+    endif
+
 	let g:quickrun_config['watchdogs_checker/jshint'] = {'cmdopt': '--config `/.jshintrc'}
 '''
 hook_post_source = '''
 	call watchdogs#setup(g:quickrun_config)
 '''
 
-#[[plugins]]
-#repo = 'vim-hier'
+[[plugins]]
+repo = 'vim-hier'
 
-#[[plugins]]
-#repo = 'quickfixstatus'
+[[plugins]]
+repo = 'quickfixstatus'
 
 [[plugins]]
 repo = 'osyo-manga/shabadou.vim'
@@ -87,7 +116,7 @@ hook_add = '''
     let g:NERDTreeShowHidden = 1
     let g:NERDTreeShowBookmards = 1
     let file_name = expand("%:p")
-    nnoremap <slient><C-e> : NERDTreeToggle<CR>
+    nnoremap <silent><C-e> : NERDTreeToggle<CR>
 '''
 
 # シンタックスチェック系

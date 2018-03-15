@@ -4,6 +4,9 @@ fi
 
 export PATH=/mingw64/bin:$PATH
 
+# work
+export PATH=/home/n-tada/work/jmeter/jmeter/bin:$PATH
+
 PS1='\[\033]0;$MSYSTEM:${PWD//[^[:ascii:]]/?}\007\]' # set window title
 PS1="$PS1"'\[\033[32m\]'       # change to green
 PS1="$PS1"'\u@\h '             # user@host<space>
@@ -14,7 +17,7 @@ PS1="$PS1"'\w'                 # current working directory
 PS1="$PS1"'\[\033[0m\]' # change color
 PS1="$PS1"'\n'          # new line
 PS1="$PS1"'λ '         # prompt: alias λ
-
+# PS1="$PS1"'$\[\e[m\] ' # prompt: alias $
 
 # for go lang
 if [ -x "`which go`" ]; then
@@ -49,4 +52,5 @@ function v() {
     _pecowrap_exec "find $1 -maxdepth 1 -type f | sort" || return
     vi $(_pecowrap_result)
 }
+
 
