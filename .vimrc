@@ -1,3 +1,8 @@
+" reset augroup
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 
@@ -31,19 +36,25 @@ if dein#load_state(s:dein_dir)
         call dein#add('roxma/vim-hug-neovim-rpc')
     endif
 
+    " Colorscheme
+    call dein#add('w0ng/vim-hybrid')
+    call dein#add('tomasr/molokai')
+    call dein#add('raphamorim/lucario')
+    call dein#add('jdkanani/vim-material-theme')
+    call dein#add('jacoborus/tender.vim')
+
 	" 設定終了
 	call dein#end()
 	call dein#save_state()
 endif
 
-filetype plugin indent on
-"syntax on
-syntax enable
-
 " 未インストールがあればインストール
 if dein#check_install()
 	call dein#install()
 endif
+
+filetype plugin indent on
+syntax enable
 
 " vimログ出力
 set verbosefile=~/myVimLog
@@ -76,10 +87,9 @@ autocmd ColorScheme * highlight Folded ctermbg=none
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
 " visual
+set cursorline      " 現在の行をハイライト
 set background=dark
 colorscheme lucario
-" colorscheme material-theme
-set cursorline      " 現在の行をハイライト
 hi clear CursoLine  " 行番号のみハイライト
 set colorcolumn=80
 set number          " 行番号

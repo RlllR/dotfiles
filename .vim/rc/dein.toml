@@ -131,19 +131,3 @@ hook_add = '''
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-
-# colorscheme
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-[[plugins]]
-repo = 'raphamorim/lucario'
-
-[[plugins]]
-repo = 'jdkanani/vim-material-theme'
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
