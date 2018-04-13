@@ -16,6 +16,17 @@ hook_post_add = '''
 	let g:dein#plugin.build = cmd
 '''
 
+# Git関連
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+    nnoremap <silent> ,gt :<C-u>GitGutterlineHighlightsToggle<CR>
+'''
+
 # ブランチ・タグ指定
 [[plugins]]
 repo = 'delphinus35/typescript-vim'
@@ -112,15 +123,9 @@ hook_add = '''
     let g:NERDTreeShowHidden = 1
     let g:NERDTreeShowBookmarks = 1
     let file_name = expand("%:p")
-    nnoremap <silent><C-e> : NERDTreeToggle<CR>
+    nnoremap <silent><C-e> : NERDTree<CR>
 '''
 
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-    nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
-    nnoremap <silent> ,gt :<C-u>GitGutterlineHighlightsToggle<CR>
-'''
 
 # シンタックスチェック系
 [[plugins]] # toml syntax
@@ -130,11 +135,15 @@ on_ft = 'toml'
 # colorscheme
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
-#[[plugins]]
+
+[[plugins]]
 repo = 'tomasr/molokai'
+
 [[plugins]]
 repo = 'raphamorim/lucario'
+
 [[plugins]]
 repo = 'jdkanani/vim-material-theme'
+
 [[plugins]]
 repo = 'jacoborus/tender.vim'

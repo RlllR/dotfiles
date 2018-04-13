@@ -45,6 +45,9 @@ if dein#check_install()
 	call dein#install()
 endif
 
+" vimログ出力
+set verbosefile=~/myVimLog
+set verbose=20
 
 set mouse=
 set scrolloff=3
@@ -73,7 +76,9 @@ autocmd ColorScheme * highlight Folded ctermbg=none
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
 " visual
+set background=dark
 colorscheme lucario
+" colorscheme material-theme
 set cursorline      " 現在の行をハイライト
 hi clear CursoLine  " 行番号のみハイライト
 set colorcolumn=80
@@ -122,6 +127,8 @@ nnoremap Y y$
 nnoremap ; :
 
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR> " ESCキー連打でハイライトを消す
+
+imap <C-Space> <C-x><C-o>
 
 
 " php
