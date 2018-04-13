@@ -44,12 +44,28 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+	if !exists('g:quidkrun_config')
+		let g:quickrun_config = {}
+	endif
+	let g:quickrun_config['watchdogs_checker/'] = {
+		\ 'outputter/quickfix/open_cmd' : '',
+		\ 'hook/qfstatusline_update/enable_exit' : 1,
+		\ 'hook/qfstatusline_update/priority_exit' : 4,
+		\}
+'''
+
+[[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
 depends = [
-  'vim-hier',
-  'quickfixstatus',
-  'shabadou.vim',
-  'vim-quickrun',
+  'jceb/vim-hier',
+  'dannyob/quickfixstatus',
+  'osho-manga/shabadou.vim',
+  'thinca/vim-quickrun',
 ]
 on_event = ['FocusLost', 'CursorHold']
 hook_add = '''
@@ -91,32 +107,19 @@ hook_post_source = '''
 '''
 
 [[plugins]]
-repo = 'vim-hier'
-
-[[plugins]]
-repo = 'quickfixstatus'
-
-[[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-	if !exists('g:quidkrun_config')
-		let g:quickrun_config = {}
-	endif
-	let g:quickrun_config['watchdogs_checker/'] = {
-		\ 'outputter/quickfix/open_cmd' : '',
-		\}
-'''
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     let g:NERDTreeShowHidden = 1
-    let g:NERDTreeShowBookmards = 1
+    let g:NERDTreeShowBookmarks = 1
     let file_name = expand("%:p")
     nnoremap <silent><C-e> : NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+    nnoremap <silent> ,gt :<C-u>GitGutterlineHighlightsToggle<CR>
 '''
 
 # シンタックスチェック系

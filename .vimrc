@@ -26,16 +26,24 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:toml,      {'lazy': 0})
 	call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+
 	" 設定終了
 	call dein#end()
 	call dein#save_state()
 endif
 
+filetype plugin indent on
+"syntax on
+syntax enable
+
 " 未インストールがあればインストール
 if dein#check_install()
 	call dein#install()
 endif
-
 
 
 set mouse=
@@ -45,7 +53,7 @@ set scrolloff=3
 set expandtab       " タブの代わりに空白
 set tabstop=4       " タブ幅
 set shiftwidth=4    " 自動インデントでずれる幅
-set softtabstop=2   " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く
+set softtabstop=4   " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く
 set autoindent      " 改行時に前の行のインデントを継続
 set smartindent     " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
@@ -65,7 +73,6 @@ autocmd ColorScheme * highlight Folded ctermbg=none
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
 " visual
-syntax on
 colorscheme lucario
 set cursorline      " 現在の行をハイライト
 hi clear CursoLine  " 行番号のみハイライト
@@ -104,6 +111,7 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" tab
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 

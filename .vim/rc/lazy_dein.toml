@@ -8,7 +8,7 @@ on_ft = ['typescript']
 repo = 'Shougo/neocomplete.vim'
 on_i = 1
 
-
+# unite
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
@@ -20,6 +20,10 @@ repo = 'Shougo/unite-outline'
 repo = 'Shougo/neomru.vim'
 on_source = ['unite.vim']
 
+# denite
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
 
 # 特定のコマンド実行時
 [[plugins]]
@@ -33,3 +37,11 @@ repo = 'thinca/vim-fontzoom'
 on_cmd = ['Fontzoom']
 on_map = ['<Plug>(fontzoom-']
 gui    = 1
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['md', 'markdown']

@@ -16,8 +16,7 @@ PS1="$PS1"'\w'                 # current working directory
 
 PS1="$PS1"'\[\033[0m\]' # change color
 PS1="$PS1"'\n'          # new line
-PS1="$PS1"'λ '         # prompt: alias λ
-# PS1="$PS1"'$\[\e[m\] ' # prompt: alias $
+PS1="$PS1"'$\[\e[m\] '  # prompt: alias $
 
 # for go lang
 if [ -x "`which go`" ]; then
