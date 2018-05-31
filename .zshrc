@@ -587,7 +587,6 @@ zshrc_setopt()
 
 zshrc_prompt() {
     # PROMPT
-    #
     terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
     left_down_prompt_preexec() {
         print -rn -- $terminfo[el]

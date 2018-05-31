@@ -39,7 +39,7 @@ if dein#load_state(s:dein_dir)
     " Colorscheme
     call dein#add('w0ng/vim-hybrid')
     call dein#add('tomasr/molokai')
-    call dein#add('raphamorim/lucario')
+    " call dein#add('raphamorim/lucario')
     call dein#add('jdkanani/vim-material-theme')
     call dein#add('jacoborus/tender.vim')
 
@@ -89,7 +89,8 @@ autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 " visual
 set cursorline      " 現在の行をハイライト
 set background=dark
-colorscheme lucario
+"colorscheme lucario
+"colorscheme lucario
 hi clear CursoLine  " 行番号のみハイライト
 set colorcolumn=80
 set number          " 行番号
