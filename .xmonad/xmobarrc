@@ -1,0 +1,51 @@
+-- vim: ft=haskell
+Config { font = "xft:Migu 1M:size=13"
+       , bgColor = "#1c1c1c"
+       , fgColor = "#404040"
+       , position = TopSize C 100 33
+       , lowerOnStart = False
+       , overrideRedirect = False
+       , border = BottomBM 0
+       , borderColor = "#4e4e4e"
+       , commands = [ Run Network "eth0" [ "-t"       , "⇩<rx>  ⇧<tx> "
+                                         , "--Low"    , "40"
+                                         , "--High"   , "200"
+                                         , "-m"       , "4"
+                                         , "--normal" , "#b0bdbd"
+                                         , "--high"   , "#a5d6a7"
+                                         ] 10
+                    , Run MultiCpu       [ "-t"       , "■  <total0>.<total1>.<total2>.<total3>.<total4>.<total5>.<total6>.<total7> "
+                                         , "--Low"    , "40"
+                                         , "--High"   , "85"
+                                         , "-m"       , "2"
+                                         , "--normal" , "#b0bdbd"
+                                         , "--high"   , "#a5d6a7"
+                                         ] 10
+
+                    , Run Memory         [ "-t"       , "□  <usedratio>%"
+                                         , "--Low"    , "40"
+                                         , "--High"   , "90"
+                                         , "-m"       , "2"
+                                         , "--normal" , "#b0bdbd"
+                                         , "--high"   , "#a5d6a7"
+                                         ] 10
+                    , Run BatteryP       ["CMB1"]
+                                         [ "-t"       , "| <acstatus> "
+                                         , "--Low"    , "40"
+                                         , "--High"   , "80"
+                                         , "-low"     , "#ef9a9a"
+                                         , "--normal" , "#b0bdbd"
+                                         , "--"
+                                                , "-o" , "<left>% (<timeleft>)"
+                                                , "-O" , "Charging <left>%"
+                                                , "-i" , "<left>%"
+                                         ] 50
+                    , Run Date "%a %m/%d %H:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       -- 全角だとフォントが崩れて表示されないからとりあえず日付だけ
+       --, template = "%StdinReader% }{ %multicpu%%memory%%eth0%%battery%<fc=#ece391>%date%</fc>"
+       , template = "%StdinReader% }{ <fc=#ece391>%date%</fc>"
+       }
