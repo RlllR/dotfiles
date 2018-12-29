@@ -90,7 +90,6 @@ autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 set cursorline      " 現在の行をハイライト
 set background=dark
 "colorscheme lucario
-"colorscheme lucario
 hi clear CursoLine  " 行番号のみハイライト
 set colorcolumn=80
 set number          " 行番号
@@ -140,7 +139,6 @@ nnoremap ; :
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR> " ESCキー連打でハイライトを消す
 
 imap <C-Space> <C-x><C-o>
-
 
 " php
 augroup PHP_SyntaxCheck

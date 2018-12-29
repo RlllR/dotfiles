@@ -1,5 +1,5 @@
 if [ -f $HOME/.bashrc ]; then
-	. $HOME/.bashrc
+	  . $HOME/.bashrc
 fi
 
 export PATH=/mingw64/bin:$PATH
@@ -24,7 +24,6 @@ if [ -x "`which go`" ]; then
     export GOPATH=/mingw64
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
-
 
 function peco_ls() {
     ls > /tmp/ls.txt
@@ -51,5 +50,3 @@ function v() {
     _pecowrap_exec "find $1 -maxdepth 1 -type f | sort" || return
     vi $(_pecowrap_result)
 }
-
-
