@@ -21,7 +21,6 @@ Config { font = "xft:Migu 1M:size=13"
                                          , "--normal" , "#b0bdbd"
                                          , "--high"   , "#a5d6a7"
                                          ] 10
-
                     , Run Memory         [ "-t"       , "□  <usedratio>%"
                                          , "--Low"    , "40"
                                          , "--High"   , "90"
@@ -47,5 +46,6 @@ Config { font = "xft:Migu 1M:size=13"
        , alignSep = "}{"
        -- 全角だとフォントが崩れて表示されないからとりあえず日付だけ
        --, template = "%StdinReader% }{ %multicpu%%memory%%eth0%%battery%<fc=#ece391>%date%</fc>"
+       --, template = " %StdinReader% }{ [%eth0%] [%cpu%] [%memory%] [%battery%] [<fc=orenge>%date%</fc>] "
        , template = "%StdinReader% }{ <fc=#ece391>%date%</fc>"
        }

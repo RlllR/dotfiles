@@ -1,0 +1,26 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_add = '''
+	if dein#_is_windows()
+		let cmd = 'tools\\update-dll-mingw'
+	elseif dein#util#_is_cygwin()
+		let cmd = 'make -f make_cygwin.mak'
+	elseif executable('gmake')
+		let cmd = 'gmake'
+	else
+		let cmd = 'make'
+	endif
+	let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    let g:NERDTreeShowHidden = 1
+    let g:NERDTreeShowBookmarks = 1
+    let file_name = expand("%:p")
+    nnoremap <silent><C-e> :NERDTreeToggle<CR>
+'''

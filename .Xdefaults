@@ -13,6 +13,12 @@ URxvt.saveLines:          10000
 URxvt.fading:             10
 URxvt.internalBorder:     20
 
+! clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
 !! font list and Spacing
 URxvt.allow_bold: false
 URxvt.font: xft:Inconsole:size=12:antialias=true
@@ -38,7 +44,11 @@ URxvt.color13:    [90]#d3869b
 URxvt.color14:    [90]#8ec07c
 URxvt.color15:    [90]#ebdbb2
 
+*foreground:      #e0dfe2
+*.foreground:     #e0dfe2
 URxvt.foreground: [90]#ebdbb2
+*background:      #0B121B
+*.background:     #0B121B
 URxvt.background: [90]#282828
 
 URxvt.colorIT:    [90]#8ec07c

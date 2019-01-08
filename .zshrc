@@ -82,6 +82,10 @@ zshrc_alias() {
     alias path='echo -e ${PATH//:/\\n}'
     alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
     # }}}
+
+    # alias ghci='stack ghci'
+    # alias ghc='stack ghc --'
+    # alias runghc='stack runghc --'
 }
 
 # less
@@ -319,3 +323,6 @@ if zshrc_startup; then
 fi
 
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m  %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}> "
+
+# neovim
+export XDG_CONFIG_HOME=$HOME/dotfiles

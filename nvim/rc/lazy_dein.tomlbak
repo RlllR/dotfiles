@@ -52,4 +52,13 @@ hook_add = '''
     if !exists('g:tcomment_types')
         let g:tcomment_types = {}
     endif
+    let g:tcommentMapLeader1 = '<C-/>'
+    let g:tcommentMapLeader2 = '<Leader>'
+    let g:tcommentMapLeaderOp1 = 'gc'
+    let g:tcommentMapLeaderOp2 = 'gc'
+    let g:tcomment_types['eruby'] = '<%# %s %>'
+    let g:tcomment_types['erb'] = '<%# %s %>'
+    let g:tcomment_types['scss'] = '/* %s */'
+    let g:tcomment_types['pug'] = '<// %s'
 '''
+
