@@ -5,7 +5,8 @@
 #
 
 umask 022
-bindkey -d
+bindkey -d # bindkey reset
+bindkey -e # bindkey emacs-mode
 
 # autloads
 autoload -Uz compinit                && compinit
