@@ -13,8 +13,10 @@ if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
     export ENHANCD_DOT_SHOW_FULLPATH=1
 fi
-zplug "mafredri/zsh-async", from:github, use:"aync.zsh"
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+#zplug "mafredri/zsh-async", from:github, use:"aync.zsh"
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
 zplug "b4b4r07/zsh-vimode-visual", use:"*.zsh", defer:3
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2

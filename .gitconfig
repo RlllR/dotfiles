@@ -1,0 +1,38 @@
+[user]
+	name =
+	email =
+[core]
+    pager = less -q -R
+    ignorecase = false
+    quotepath = false
+    safecrlf = true
+    autocrlf = false
+    excludesfile = ~/.gitignore
+    preloadindex = true
+    editor = vim
+[color]
+    ui = true
+[alias]
+	st = status
+	c = commit -v
+	ss = stash
+	br = branch -vv
+    co = checkout
+	o = checkout
+	df = diff
+	p = pull
+	pu = push
+	r = remote
+    lgl = log --oneline
+    graph = log --graph --date-order --all --pretty=format: '%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s --date=short'
+    review = diff origin/master...
+
+[pager]
+    log  = less -RX
+    show = less -RX
+    diff = less -RX
+
+[diff]
+    tool = vimdiff
+    algrithm = histogram
+    compactionHeurixtic = true
