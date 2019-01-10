@@ -119,7 +119,7 @@ endif
 
 
 " キーマッピング
-let mapleadjr="<\Space>"
+let mapleader="\<Space>"
 
 nnoremap j gj
 nnoremap k gk
@@ -150,6 +150,42 @@ augroup PHP_SyntaxCheck
   autocmd FileType php set makeprg=php\ -l\ %
   autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copne | else | cclose | endif | redraw!
 augroup END
+
+" fzy
+function! FzyCommand(choice_command, vim_command)
+    try
+        let output = system(a:choice_command . " | fzy ")
+    catch /Vim:Interrupt/
+        " Swallow errors from ^C, allow redraw! below
+    endtry
+    redraw!
+    if v:shell_error == 0 && !empty(output)
+        exec a:vim_command . ' ' . output
+    endif
+endfunction
+"nnoremap <leader>e :call FzyCommand("find -type f", ":e")<cr>
+"nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<cr>
+"nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<cr>
+"
+"" ag
+"nnoremap <leader>e :call FzyCommand("ag . --silent -l -g ''", ":e")<cr>
+"nnoremap <leader>v :call FzyCommand("ag . --silent -l -g ''", ":vs")<cr>
+"nnoremap <leader>s :call FzyCommand("ag . --silent -l -g ''", ":sp")<cr>
+
+" pt
+nnoremap <leader>e :call FzyCommand("pt . -l", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("pt . -l", ":vs")<cr>
+nnoremap <leader>s :call FzyCommand("pt . -l", ":sp")<cr>
+
+" システムのclipboardにコピー&ペースト
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+
 
 " TODO 分割
 " @see
