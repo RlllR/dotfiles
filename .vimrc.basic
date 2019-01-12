@@ -1,13 +1,42 @@
 "------------------------------------------------------------------------------
 " 基本設定 Basics
 "------------------------------------------------------------------------------
-let mapleader = ""
+let mapleader="\<Space>"
 
+" search
+set ignorecase      " 大文字小文字無視
+set smartcase       " 小文字入力のときのみ大文字小文字を無視
+set incsearch       " インクリメンタルサーチ
+set hlsearch        " 検索結果をはハイライト
 
-set clipboard+=unnamed
-set mouse=a
+" autocmd
+autocmd BufWritePre * :%s/\s\+$//ge " 行末の余分なスペースを取り除く
+
+" autocmd ColorScheme TODO 移動
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
+autocmd ColorScheme * highlight Folded ctermbg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+
+" SpellCheck
+set spell
+set spelllang=en,cjk " 日本語を除外
+
+" other
+set backspace=indent,eol,start
+set pumheight=10 " 変換候補で一度に表示される数
+set encoding=utf-8 " 文字コード
+set fileencoding=utf-8
+set vb t_vb= " ビープ消音
+
+" インサートモードからノーマルモードの変更高速化
+if !has('gui_running')
+	set timeout timeoutlen=1000 ttimeoutlen=50
+endif
+
+set clipboard+=unnamed  " OSのクリップボードを使用
+set mouse=
 set guioptions+=a
-
-imap <C-p> <ESC>"*pa
 
 filetype plugin on

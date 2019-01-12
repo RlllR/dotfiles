@@ -1,0 +1,39 @@
+"------------------------------------------------------------------------------
+" 表示 Apperance
+"------------------------------------------------------------------------------
+set showmatch       " 括弧対応をハイライト
+set number          " 行番号表示
+"set list            " 不可視文字表示
+"set listchars=tab:>.,trail:_,extends:>,precedes:< " 更かし文字の表示形式
+set display=uhex    " 印字不可能文字を16進数で表示
+set background=dark
+set lazyredraw      " コマンド実行中は再描画しない
+set ttyfast         " 高速ターミナル接続を行う
+set t_Co=256        " ターミナル：ターミナルで256色表示
+"set colorcolumn=80
+set matchtime=1     " カーソル：カーソルが飛ぶ時間を0.1秒で
+set whichwrap=b,s,h,l,<,>,[,]
+set nowrap          " テキスト折り返しなし
+set laststatus=2    " 下部ステータスラインを常に表示
+set cursorline      " カーソル行をハイライト
+
+"highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+"match ZenkakuSpace /  /
+
+" カレントウィンドウにのみ罫線を引く
+augroup cch
+  autocm! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
+augroup END
+
+hi clear CursorLine
+hi CursoLine gui=underline
+highlight CursorLine ctermbg=black guibg=black
+
+" インサートモードに入った時にカーソル行(列)の色を変更する
+augroup vimrc_change_cursorline_color
+  autocmd!
+  autocmd InsertEnter * highlight CursorLine term=underline cterm=underline ctermbg=240 gui=underline guibg=#666666 | highlight CursorColumn ctermfg=231 ctermbg=31 gui=bold guifg=#ffffff guibg=#0087af
+  autocmd InsertLeave * highlight CursorLine term=underline cterm=underline ctermbg=235 gui=underline guibg=#333333 | highlight CursorColumn term=reverse ctermbg=235 guibg=#333333
+augroup END

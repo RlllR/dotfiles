@@ -1,6 +1,6 @@
 " reset augroup
 augroup MyAutoCmd
-    autocmd!
+  autocmd!
 augroup END
 
 " プラグインが実際にインストールされるディレクトリ
@@ -63,43 +63,43 @@ syntax enable
 set mouse=
 set scrolloff=3
 
-" tab
-set expandtab       " タブの代わりに空白
-set tabstop=4       " タブ幅
-set shiftwidth=4    " 自動インデントでずれる幅
-set softtabstop=4   " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く
-set autoindent      " 改行時に前の行のインデントを継続
-set smartindent     " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+"" tab
+"set expandtab       " タブの代わりに空白
+"set tabstop=4       " タブ幅
+"set shiftwidth=4    " 自動インデントでずれる幅
+"set softtabstop=4   " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く
+"set autoindent      " 改行時に前の行のインデントを継続
+"set smartindent     " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
-" search
-set ignorecase    " 大文字小文字無視
-set smartcase     " 小文字入力のときのみ大文字小文字を無視
-set incsearch     " インクリメンタルサーチ
-set hlsearch      " 検索結果をはハイライト
+"" search
+"set ignorecase    " 大文字小文字無視
+"set smartcase     " 小文字入力のときのみ大文字小文字を無視
+"set incsearch     " インクリメンタルサーチ
+"set hlsearch      " 検索結果をはハイライト
 
-" autocmd
-autocmd BufWritePre * :%s/\s\+$//ge " 行末の余分なスペースを取り除く
-" autocmd ColorScheme
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight LineNr ctermbg=none
-autocmd ColorScheme * highlight NonText ctermbg=none
-autocmd ColorScheme * highlight Folded ctermbg=none
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+"" autocmd
+"autocmd BufWritePre * :%s/\s\+$//ge " 行末の余分なスペースを取り除く
+"" autocmd ColorScheme
+"autocmd ColorScheme * highlight Normal ctermbg=none
+"autocmd ColorScheme * highlight LineNr ctermbg=none
+"autocmd ColorScheme * highlight NonText ctermbg=none
+"autocmd ColorScheme * highlight Folded ctermbg=none
+"autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
-" visual
-set cursorline      " 現在の行をハイライト
-set background=dark
-"colorscheme lucario
-hi clear CursoLine  " 行番号のみハイライト
-set colorcolumn=80
-set number          " 行番号
-set showmatch       " カーソル：括弧にカーソルを合わせたとき、対応した括弧を表示する
-set matchtime=1     " カーソル：カーソルが飛ぶ時間を0.1秒で
-set whichwrap=b,s,h,l,<,>,[,]
-set ttyfast         " ターミナル：ターミナル接続を高速にする
-set t_Co=256        " ターミナル：ターミナルで256色表示
-set nowrap          " テキスト折り返しなし
-set laststatus=2    " 下部ステータスラインを常に表示
+"" visual
+"set cursorline      " 現在の行をハイライト
+"set background=dark
+""colorscheme lucario
+"hi clear CursoLine  " 行番号のみハイライト
+"set colorcolumn=80
+"set number          " 行番号
+"set showmatch       " カーソル：括弧にカーソルを合わせたとき、対応した括弧を表示する
+"set matchtime=1     " カーソル：カーソルが飛ぶ時間を0.1秒で
+"set whichwrap=b,s,h,l,<,>,[,]
+"set ttyfast         " ターミナル：ターミナル接続を高速にする
+"set t_Co=256        " ターミナル：ターミナルで256色表示
+"set nowrap          " テキスト折り返しなし
+"set laststatus=2    " 下部ステータスラインを常に表示
 
 " SpellCheck
 set spell
@@ -166,16 +166,19 @@ endfunction
 "nnoremap <leader>e :call FzyCommand("find -type f", ":e")<cr>
 "nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<cr>
 "nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<cr>
+"nnoremap <leader>t :call FzyCommand("find -type f", ":tabnew")<cr>
 "
 "" ag
 "nnoremap <leader>e :call FzyCommand("ag . --silent -l -g ''", ":e")<cr>
 "nnoremap <leader>v :call FzyCommand("ag . --silent -l -g ''", ":vs")<cr>
 "nnoremap <leader>s :call FzyCommand("ag . --silent -l -g ''", ":sp")<cr>
+"nnoremap <leader>t :call FzyCommand("ag . --silent -l -g ''", ":tabnew")<cr>
 
 " pt
 nnoremap <leader>e :call FzyCommand("pt . -l", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("pt . -l", ":vs")<cr>
 nnoremap <leader>s :call FzyCommand("pt . -l", ":sp")<cr>
+nnoremap <leader>t :call FzyCommand("pt . -l", ":tabnew")<cr>
 
 " システムのclipboardにコピー&ペースト
 vmap <leader>y "+y
@@ -192,13 +195,13 @@ vmap <leader>P "+P
 " https://github.com/yuroyoro/dotfiles/blobl/master/.vimrc
 "
 " 基本設定
-" source ~/dotfiles/.vimrc.basic
+source ~/dotfiles/.vimrc.basic
 " ステータスライン
-" source ~/dotfiles/.vimrc.statusline
+source ~/dotfiles/.vimrc.statusline
 " インデント設定
-" source ~/dotfiles/.vimrc.indent
+source ~/dotfiles/.vimrc.indent
 " 表示関連
-" source ~/dotfiles/.vimrc.apperance
+source ~/dotfiles/.vimrc.apperance
 " 補完関連
 " source ~/dotfiles/.vimrc.completion
 " Tags関連
