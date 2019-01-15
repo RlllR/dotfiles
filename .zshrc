@@ -327,3 +327,7 @@ PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m  %{$fg_no_bold[yellow]%}%
 
 # neovim
 export XDG_CONFIG_HOME=$HOME/dotfiles
+
+# direnv
+export EDITOR=vim
+eval "$(direnv hook zsh)"
