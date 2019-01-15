@@ -259,14 +259,27 @@ zshrc_keybind() {
 
     # Add vim-like keybind to viins mode
 
-    # Ctrl+r
     fzf-history-selection() {
         BUFFER=`history -n 1 | tac | awk '!a[$0]++' | fzf`
         CURSOR=$#BUFFER
         zle reset-prompt
     }
     zle -N fzf-history-selection
+
+    fzf-gitbranch-selection() {
+        local branches branch
+        branches=$(git branch -vv --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+            fzf-tmux -d $((2 + $(wc -l <<< "$branches") )) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    }
+    zle -N fzf-gitbranch-selection
+
+    # Ctrl+r history on fzf
     bindkey '^r' fzf-history-selection
+    bindkey '^g' fzf-gitbranch-selection
+    #bindkey '^f'
+
 }
 
 zshrc_comp() {

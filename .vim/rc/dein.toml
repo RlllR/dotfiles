@@ -129,8 +129,32 @@ hook_add = '''
     nnoremap <silent><C-e> :NERDTreeToggle<CR>
 '''
 
-
 # シンタックスチェック系
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+# fzf
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+build = './install'
+hook_add = '''
+    let g:fzf_layout = {'down': '~40%'}
+    let g:fzf_buffers_jump = 1
+    let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+    let g:fzf_tags_command = 'ctags -R'
+    nnoremap <slient> <leader><leader> :call fzf#run({
+        \   'sink': 'tabedit',
+        \   'options': '--multi --reverse'
+        \})<CR>
+    nnoremap <slient> <leader><Enter> :call fzf#run({
+        \   'source': 'reverse(s:all_files())',
+        \   'sink': 'edit',
+        \   'options': '-m -x +s'
+        \})<CR>
+    nnoremap <slient > <leader>g  :call fzf#run({
+        \   'source': 'git ls-files',
+        \   'sink': 'e'
+        \})<CR>
+'''

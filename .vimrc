@@ -189,6 +189,24 @@ vmap <leader>p "+p
 vmap <leader>P "+P
 
 
+" fzf
+let g:fzf_layout = {'down': '~40%'}
+let g:fzf_buffers_jump = 1
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_tags_command = 'ctags -R'
+nnoremap <silent> <leader><leader> :call fzf#run({
+    \   'sink': 'tabedit',
+    \   'options': '--multi --reverse'
+    \})<CR>
+nnoremap <silent> <leader><Enter> :call fzf#run({
+    \   'source': 'reverse(s:all_files())',
+    \   'sink': 'edit',
+    \   'options': '-m -x +s'
+    \})<CR>
+nnoremap <silent> <leader>g  :call fzf#run({
+    \   'source': 'git ls-files',
+    \   'sink': 'e'
+    \})<CR>
 
 " TODO 分割
 " @see
