@@ -1,6 +1,3 @@
-[user]
-	name =
-	email =
 [core]
     pager = less -q -R
     ignorecase = false
