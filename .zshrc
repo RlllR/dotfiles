@@ -338,9 +338,16 @@ fi
 
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m  %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}> "
 
+## MISC
+export EDITOR=vim
+
 # neovim
 export XDG_CONFIG_HOME=$HOME/dotfiles
 
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
 # direnv
-export EDITOR=vim
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(direnv hook zsh)"
