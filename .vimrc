@@ -138,6 +138,9 @@ nnoremap ; :
 
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR> " ESCキー連打でハイライトを消す
 
+nnoremap <leader>w :w<CR> " 保存
+nnoremap <leader>q :wq<CR> " 終了
+
 imap <C-Space> <C-x><C-o>
 
 " TComment
@@ -174,11 +177,11 @@ endfunction
 "nnoremap <leader>s :call FzyCommand("ag . --silent -l -g ''", ":sp")<cr>
 "nnoremap <leader>t :call FzyCommand("ag . --silent -l -g ''", ":tabnew")<cr>
 
-" pt
-nnoremap <leader>e :call FzyCommand("pt . -l", ":e")<cr>
-nnoremap <leader>v :call FzyCommand("pt . -l", ":vs")<cr>
-nnoremap <leader>s :call FzyCommand("pt . -l", ":sp")<cr>
-nnoremap <leader>t :call FzyCommand("pt . -l", ":tabnew")<cr>
+"" pt todo 削除？
+"nnoremap <leader>e :call FzyCommand("pt . -l", ":e")<cr>
+"nnoremap <leader>v :call FzyCommand("pt . -l", ":vs")<cr>
+"nnoremap <leader>s :call FzyCommand("pt . -l", ":sp")<cr>
+"nnoremap <leader>t :call FzyCommand("pt . -l", ":tabnew")<cr>
 
 " システムのclipboardにコピー&ペースト
 vmap <leader>y "+y
@@ -188,21 +191,33 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-
 " fzf
 let g:fzf_layout = {'down': '~40%'}
 let g:fzf_buffers_jump = 1
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_tags_command = 'ctags -R'
+nnoremap <silent> <leader><leader> :GFiles<CR> " fzf(:GFiles)
+nnoremap <silent> <leader><tab>    :Buffers<CR> " fzf(:Buffers)
+nnoremap <silent> <leader>a        :Ag<CR> " fzf(:Ag)
+nnoremap <silent> <leader>g        :GFiles?<CR> " fzf(:GFiles?)
 
-" git 管理ファイル
-nnoremap <silent> <leader><leader>  :call fzf#run(fzf#wrap({
-    \   'source': 'git ls-files',
-    \}))<CR>
-" Buffer
-nnoremap <silent> <leader><Enter> :call fzf#run(fzf#wrap({
-    \   'source': map(range(1, bufnr('$')), 'bufname(v:val)')
-    \}))<CR>
+"" cat /usr/share/dict/words
+"nnoremap <leader><Enter> <plug>(fzf-complete-word)
+"" path completion using find (file + dir)
+"imap <leader>f <plug>(fzf-complete-path)
+"" file completion using find
+"imap <leader>F <plug>(fzf-complete-file)
+"" file completion using ag
+"imap <leader>a <plug>(fzf-complete-file-ag)
+"" line completion (all open buffers)
+"imap <leader>b <plug>(fzf-complete-line)
+"" line completion (current buffer only)
+"imap <leader>B <plug>(fzf-complete-buffer-line)
+"" key mapping
+"nmap <leader>m <plug>(fzf-maps-n)
+"imap <leader>m <plug>(fzf-maps-i)
+"xmap <leader>m <plug>(fzf-maps-x)
+"omap <leader>m <plug>(fzf-maps-o)
 
 " TODO 分割
 " @see
