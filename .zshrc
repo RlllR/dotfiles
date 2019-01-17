@@ -179,20 +179,35 @@ xmdtest () {
 setopt prompt_subst
 setopt transient_rprompt
 r_prompt() {
-    if has '__git_ps1' ; then
-        export GIT_PS1_SHOWDIRTYSTATE=true
-        export GIT_PS1_SHOWSTASHSTATE=true
-        export GIT_PS1_SHOWUNTRACKEDFILES=true
-        export GIT_PS1_SHOWUPSTREAM="auto"
-        export GIT_PS1_DESCRIVE_STYLE="branch"
-        export GIT_PS1_SHOWCOLORHINTS=0
-        RPROMPT="%{$fg[red]%}"`echo $(__git_ps1 "(%s)")|sed -e s/%/%%/|sed -e s/%%%/%%/|sed -e 's/\\$/\\\\$/'`"%{${reset_color}%}"
-        RPROMPT+=$" at %{$fg[blue]%}[%~]%{$reset_color%}"
-        RPROMPT+="${p_buffer_stack}"
-    else
+    if [ ! -e ".git" ]; then
         RPROMPT="[%{$fg[blue]%}%~%{$reset_color%}]"
+        return
     fi
+    local branch_name st branch_status
+    branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+    st=`git status 2> /dev/null`
+    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+        # commit済み
+        branch_status="%F{green}"
+    elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+        # git管理されていないファイルがある
+        branch_status="%F{red}?"
+    elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+        # git add されていないファイルがある
+        branch_status="%F{red}+"
+    elif [[ -n `echo "$st" | grep "^Changes to be commited"` ]]; then
+        # git commit されていないファイルがある
+        branch_status="%F{yellow}!"
+    elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+        # コンフリクト
+        branch_status="%F{red}!"
+        branch_name="no branch"
+    else
+        branch_status="%F{blue}"
+    fi
+    RPROMPT="${branch_status}($branch_name)%{$reset_color%}[%{$fg[blue]%}%~%{$reset_color%}]"
 }
+
 add-zsh-hook precmd r_prompt
 
 # SPROMPT
