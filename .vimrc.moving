@@ -1,0 +1,24 @@
+"------------------------------------------------------------------------------
+" 移動関連 Move
+"------------------------------------------------------------------------------
+" カーソル移動
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+ " jjでEsc
+inoremap jj <Esc>
+
+" S-y で行末までヤンク
+nnoremap Y y$
+
+" ; : 入れ替え
+nnoremap ; :
+
+" 保存
+nnoremap <leader>w :w<CR>
+" 終了
+nnoremap <leader>q :wq<CR>
+
+imap <C-Space> <C-x><C-o>

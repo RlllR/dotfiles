@@ -1,0 +1,40 @@
+"------------------------------------------------------------------------------
+" ウィンドウ関連 Window
+"------------------------------------------------------------------------------
+" タブ移動
+"nnoremap <C-n> gt
+"nnoremap <C-p> gT
+nnoremap wn gt
+nnoremap wp gT
+
+" ウィンドウ移動
+nnoremap wj <C-w>j
+nnoremap wk <C-w>k
+nnoremap wl <C-w>l
+nnoremap wh <C-w>h
+nnoremap ww <C-w>w
+
+" ウィンドウ移動
+nnoremap wJ <C-w>J
+nnoremap wK <C-w>K
+nnoremap wL <C-w>L
+nnoremap wH <C-w>H
+nnoremap wr <C-w>r
+
+" ウィンドウサイズ関連
+nnoremap w= <C-w>=
+nnoremap wo <C-w>=
+
+nnoremap wO <C-w>_<C-w>|
+"call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+"call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+"call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+"call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+"call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+"call submode#map('bufmove', 'n', '', '<', '<C-w><')
+"call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+"call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
+" ウィンドウ分割
+nnoremap ws :<C-u>sp<CR>
+nnoremap wv :<C-u>vs<CR>

@@ -19,9 +19,9 @@ autocmd ColorScheme * highlight NonText ctermbg=none
 autocmd ColorScheme * highlight Folded ctermbg=none
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 
-" SpellCheck
-set spell
-set spelllang=en,cjk " 日本語を除外
+"" SpellCheck
+"set spell
+"set spelllang=en,cjk " 日本語を除外
 
 " other
 set backspace=indent,eol,start
@@ -37,6 +37,7 @@ endif
 
 set clipboard+=unnamed  " OSのクリップボードを使用
 set mouse=
+set scrolloff=3
 set guioptions+=a
 
 filetype plugin on
