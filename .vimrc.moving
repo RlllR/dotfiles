@@ -15,6 +15,7 @@ nnoremap Y y$
 
 " ; : 入れ替え
 nnoremap ; :
+vnoremap ; :
 
 " 保存
 nnoremap <leader>w :w<CR>
