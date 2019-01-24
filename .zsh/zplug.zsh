@@ -42,6 +42,7 @@ zplug "mollifier/zload"
 #zplug "plugins/git", from:oh-my-zsh, if:"which git 1>/dev/null"
 #zplug "plugins/github", from:oh-my-zsh, if:"which hub 1>/dev/null"
 #zplug "plugins/gitignore", from:oh-my-zsh, if:"which git 1>/dev/null"
+zplug "plugins/git-prompt", from:oh-my-zsh, if:"which git 1>/dev/null"
 #zplug "plugins/gnu-utils", from:oh-my-zsh
 #zplug "plugins/go", from:oh-my-zsh, if:"which got 1>/dev/null"
 #zplug "plugins/gpg-agent", from:oh-my-zsh, if:"which gpg-agent 1>/dev/null"

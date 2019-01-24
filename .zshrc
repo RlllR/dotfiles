@@ -178,37 +178,38 @@ xmdtest () {
 # right prompt
 setopt prompt_subst
 setopt transient_rprompt
-r_prompt() {
-    if [ ! -e ".git" ]; then
-        RPROMPT="[%{$fg[blue]%}%~%{$reset_color%}]"
-        return
-    fi
-    local branch_name st branch_status
-    branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-    st=`git status 2> /dev/null`
-    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-        # commit済み
-        branch_status="%F{green}"
-    elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-        # git管理されていないファイルがある
-        branch_status="%F{red}?"
-    elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-        # git add されていないファイルがある
-        branch_status="%F{red}+"
-    elif [[ -n `echo "$st" | grep "^Changes to be commited"` ]]; then
-        # git commit されていないファイルがある
-        branch_status="%F{yellow}!"
-    elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-        # コンフリクト
-        branch_status="%F{red}!"
-        branch_name="no branch"
-    else
-        branch_status="%F{blue}"
-    fi
-    RPROMPT="${branch_status}($branch_name)%{$reset_color%}[%{$fg[blue]%}%~%{$reset_color%}]"
-}
-
-add-zsh-hook precmd r_prompt
+# r_prompt() {
+#     RPROMPT=$RPROMPT
+#     if [ ! -e ".git" ]; then
+#         RPROMPT="[%{$fg[blue]%}%~%{$reset_color%}]"
+#         return
+#     fi
+#     local branch_name st branch_status
+#     branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+#     st=`git status 2> /dev/null`
+#     if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+#         # commit済み
+#         branch_status="%F{green}"
+#     elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+#         # git管理されていないファイルがある
+#         branch_status="%F{red}?"
+#     elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+#         # git add されていないファイルがある
+#         branch_status="%F{red}+"
+#     elif [[ -n `echo "$st" | grep "^Changes to be commited"` ]]; then
+#         # git commit されていないファイルがある
+#         branch_status="%F{yellow}!"
+#     elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+#         # コンフリクト
+#         branch_status="%F{red}!"
+#         branch_name="no branch"
+#     else
+#         branch_status="%F{blue}"
+#     fi
+#     RPROMPT="${branch_status}($branch_name)%{$reset_color%}[%{$fg[blue]%}%~%{$reset_color%}]"
+# }
+#
+# add-zsh-hook precmd r_prompt
 
 # SPROMPT
 SPROMPT="%{$fg[red]%}Did you mean?: %R -> %r [nyae]? %{${reset_color}%}"
