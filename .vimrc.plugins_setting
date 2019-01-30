@@ -56,3 +56,13 @@ nnoremap <silent> <leader>g        :GFiles?<CR> " fzf(:GFiles?)
 "----------------------------
 nnoremap <C-_><C-_> :TComment<CR>
 vnoremap <C-_><C-_> :TComment<CR>
+
+"----------------------------
+" memolist
+"----------------------------
+let g:memolist_fzf = 1
+let g:memolist_prompt_tags= 1
+let g:memolist_prompt_categories= 1
+nnoremap <leader>ml :MemoList<CR>
+nnoremap <leader>mn :MemoNew<CR>
+nnoremap <leader>mg :MemoGrep<CR>

@@ -155,6 +155,15 @@ get_os() {
     done
 }
 
+fp() {
+    fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
+              echo {} is a binary file ||
+              (highlight -O ansi -l {} ||
+               coderay {} ||
+               rougify {} ||
+               cat {}) 2> /dev/null | head -500'
+}
+
 # docker でubuntu-jwm 起動
 jwm () {
     docker info &> /dev/null \
@@ -356,14 +365,3 @@ PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m  %{$fg_no_bold[yellow]%}%
 
 ## MISC
 export EDITOR=vim
-
-# neovim
-export XDG_CONFIG_HOME=$HOME/dotfiles
-
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
-# direnv
-export PATH="$HOME/.local/bin:$PATH"
-eval "$(direnv hook zsh)"

@@ -53,3 +53,7 @@ hook_add = '''
         let g:tcomment_types = {}
     endif
 '''
+
+[[plugins]]
+repo = 'glidenote/memolist.vim'
+
