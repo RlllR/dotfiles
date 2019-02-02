@@ -25,7 +25,7 @@
     dfl = log --no-merges --pretty=format:'%C(yellow)%h %C(white)%s %C(green) %an'
     graph = log --graph --date-order --all --pretty=format:'%h %C(red)%d %C(green)%ad %C(blue)%cn %C(reset)%s --date=short'
     review = diff origin/master...
-    ranking = qkkkkkk
+    cch= "!f() { git cherry -v "$@" | awk '{ if($1 == \"+\"){ color = \"green\" } if($1 == \"-\"){ color = \"red\" } cmd = \"git show --date=short --no-notes --pretty=format:\\047%C\" color $1 \" %h %Cgreen%cd %Cblue%cn%x09%Creset%s\\047 --summary \" $2; cmd | getline t; close(cmd); print t }' ;}; f"
 
 [pager]
     log  = less -RX
