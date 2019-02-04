@@ -145,3 +145,17 @@ hook_add = '''
     let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
     let g:fzf_tags_command = 'ctags -R'
 '''
+
+# async
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+# vim-lsp
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plubins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
