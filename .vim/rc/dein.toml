@@ -62,16 +62,16 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
-hook_add = '''
-	if !exists('g:quidkrun_config')
-		let g:quickrun_config = {}
-	endif
-	let g:quickrun_config['watchdogs_checker/'] = {
-		\ 'outputter/quickfix/open_cmd' : '',
-		\ 'hook/qfstatusline_update/enable_exit' : 1,
-		\ 'hook/qfstatusline_update/priority_exit' : 4,
-		\}
-'''
+# hook_add = '''
+# 	if !exists('g:quidkrun_config')
+# 		let g:quickrun_config = {}
+# 	endif
+# 	let g:quickrun_config['watchdogs_checker/'] = {
+# 		\ 'outputter/quickfix/open_cmd' : '',
+# 		\ 'hook/qfstatusline_update/enable_exit' : 1,
+# 		\ 'hook/qfstatusline_update/priority_exit' : 4,
+# 		\}
+# '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'

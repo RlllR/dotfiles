@@ -43,10 +43,6 @@ repo = 'fatih/vim-go'
 on_ft = ['go']
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
-on_ft = ['md', 'markdown']
-
-[[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = '''
     if !exists('g:tcomment_types')
@@ -57,3 +53,30 @@ hook_add = '''
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+
+# MarkDownn用pulgin
+# [[plugins]]
+# # repo = 'rcmdnk/vim-markdown'
+# repo = 'plasticboy/vim-markdown'
+# [[plugins]]
+# repo = 'kannokanno/previm'
+
+# PlanUML用plugin
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+
+[[plugins]]
+repo = 'kazuph/previm'
+rev = 'feature/add-plantuml-plugin'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'

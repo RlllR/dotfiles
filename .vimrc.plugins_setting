@@ -97,3 +97,53 @@ if executable('typescript-language-server')
         \ 'whitelist': ['typescript', 'typescript.tsx'],
          })
 endif
+
+"----------------------------
+" vue
+"----------------------------
+autocmd BufNewFile,BufRead *.jsx,*.vue let b:jsx_ext_found = 1
+autocmd BufNewFile,BufRead *.jsx,*.vue set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.js
+  \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+
+"----------------------------
+" MarkdownPreview
+"----------------------------
+" nnoremap <silent><leader>p :MarkdownPreview<CR>
+" let g:mkdp_refresh_slow = 1
+" let g:mkdp_echo_preview_url = 1
+" let g:mkdp_browser = 'vivaldi-stable'
+" autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+
+"----------------------------
+" Previm
+"----------------------------
+"TODO <leader>o OpenBrowser実行したあとでないと起動しない
+nnoremap <silent><leader>p :PrevimOpen<CR>
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+"----------------------------
+" OpenBrowser
+"----------------------------
+let g:netrw_nogx = 1 " diable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+nnoremap <leader>o :<C-u>execute "OpenBrowserSmartSearch" "file:///" . expand('%:p:gs?\\?/?')<CR>
+let g:openbrowser_browser_commands = [ {'name': 'vivaldi-stable',  'args': ['{browser}', '{uri}']} ]
+
+"----------------------------
+" QuickRun
+"----------------------------
+" rev用
+let g:quickrun_config = {}
+let s:rev_command = './rev'
+if executable(s:rev_command)
+    let g:quickrun_config['php'] = {
+        \ 'command': s:rev_command,
+        \ 'cmdopt': 'exec',
+        \ 'exec': '%c %o %s',
+        \ }
+endif

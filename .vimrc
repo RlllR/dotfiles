@@ -53,6 +53,10 @@ if dein#check_install()
 	call dein#install()
 endif
 
+"" プラグイン削除
+call map(dein#check_clean(), "delete(v:val, 'rf')")
+call dein#recache_runtimepath()
+
 filetype plugin indent on
 syntax enable
 
@@ -72,7 +76,7 @@ let mapleader="\<Space>"
 augroup PHP_SyntaxCheck
   autocmd!
   autocmd FileType php set makeprg=php\ -l\ %
-  autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copne | else | cclose | endif | redraw!
+  autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif | redraw!
 augroup END
 
 " システムのclipboardにコピー&ペースト

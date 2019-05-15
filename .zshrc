@@ -87,6 +87,9 @@ zshrc_alias() {
     # alias ghci='stack ghci'
     # alias ghc='stack ghc --'
     # alias runghc='stack runghc --'
+
+    # the_platinum_searcher
+    alias pt='pt --hidden'
 }
 
 # less
@@ -117,6 +120,22 @@ reload () {
     f=(~/.zsh/Completion/*(.))
     unfunction $f:t 2>/dev/null
     autoload -U $f:t
+}
+
+# ostype returns the lowercase OS name
+ostype() {
+    echo ${(L):-$(uname)}
+}
+
+# os_detect export the PLATFORM variable as you see fit
+os_detect() {
+    export PLATFORM
+    case "$(ostype)" in
+        *'linux'*)  PLATFORM='linux'   ;;
+        *'darwin'*) PLATFORM='osx'     ;;
+        *'bsd'*)    PLATFORM='bsd'     ;;
+        *)          PLATFORM='unknown' ;;
+    esac
 }
 
 is_osx () {
@@ -155,6 +174,8 @@ get_os() {
     done
 }
 
+
+## fzf --preview
 fp() {
     fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
               echo {} is a binary file ||
@@ -162,6 +183,18 @@ fp() {
                coderay {} ||
                rougify {} ||
                cat {}) 2> /dev/null | head -500'
+}
+
+# git show fzf
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+              FZF-EOF"
 }
 
 # docker でubuntu-jwm 起動
