@@ -49,6 +49,7 @@ hook_add = '''
 	let g:airline#extensions#tabline#buffer_idx_mode = 1
 	let g:airline#extensions#virtualenv#enabled = 1
 	let g:airline#extensions#whitespace#mixed_indent_algo = 1
+    let g:airline#extensions#ale#enabled = 1
     let g:airline#extensions#error_symbol = 'E:'
     let g:airline#extensions#warning_symbol= 'W:'
     let g:airline_section_z = airline#section#create(['windowswap', '%3p%%', 'linenr', ':%3v'])

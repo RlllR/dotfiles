@@ -53,11 +53,30 @@ hook_add = '''
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 
+# javascript
 [[plugins]]
 repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'othree/javascript-libraries-syntax.vim'
+on_ft = ['javascript']
 
 [[plugins]]
 repo = 'mxw/vim-jsx'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugin]]
+repo = 'flowtype/vim-flow'
+on_ft = ['javascript', 'javascript.jsx']
 
 # MarkDownn用pulgin
 # [[plugins]]
@@ -80,3 +99,6 @@ on_ft = ['markdown']
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+
+[[plugin]]
+repo = 'w0rp/ale'

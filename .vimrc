@@ -87,6 +87,17 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
+" TODO
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq \"" . l:arg . "\""
+endfunction
+
 " 基本設定
 source ~/dotfiles/.vimrc.basic
 " ステータスライン

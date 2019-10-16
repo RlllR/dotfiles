@@ -98,13 +98,33 @@ if executable('typescript-language-server')
          })
 endif
 
-"----------------------------
-" vue
-"----------------------------
-autocmd BufNewFile,BufRead *.jsx,*.vue let b:jsx_ext_found = 1
-autocmd BufNewFile,BufRead *.jsx,*.vue set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.js
-  \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+" "----------------------------
+" " vue
+" "----------------------------
+" autocmd BufNewFile,BufRead *.jsx,*.vue let b:jsx_ext_found = 1
+" autocmd BufNewFile,BufRead *.jsx,*.vue set filetype=javascript.jsx
+" " autocmd BufNewFile,BufRead *.js
+"   \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+"
+" "----------------------------
+" " javascript syntax check
+" "----------------------------
+" "syntax hilightを自動で呼び出す
+" function! EnableJavascript()
+"   " Setup used libraries
+"   let g:used_javascript_libs = 'jquery,underscore,react,flux,jasmine,d3'
+"   let b:javascript_lib_use_jquery = 1
+"   let b:javascript_lib_use_underscore = 1
+"   let b:javascript_lib_use_react = 1
+"   let b:javascript_lib_use_flux = 1
+"   let b:javascript_lib_use_jasmine = 1
+"   let b:javascript_lib_use_d3 = 1
+"   " let g:flow#flowpath = /usr/local/bin/flow
+"   " let g:flow#autoclose = 1
+"   " let g:javascript_plugin_flow = 1
+" endfunction
+" " autocmd FileType javascript,javascript.jsx call EnableJavascript()
+" autocmd BufNewFile,BufRead javascript,javascript.jsx call EnableJavascript()
 
 "----------------------------
 " MarkdownPreview
@@ -119,7 +139,7 @@ autocmd BufNewFile,BufRead *.js
 " Previm
 "----------------------------
 "TODO <leader>o OpenBrowser実行したあとでないと起動しない
-nnoremap <silent><leader>p :PrevimOpen<CR>
+nnoremap <silent><leader>P :PrevimOpen<CR>
 augroup PrevimSettings
   autocmd!
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
@@ -147,3 +167,33 @@ if executable(s:rev_command)
         \ 'exec': '%c %o %s',
         \ }
 endif
+
+"----------------------------
+" ALE
+"----------------------------
+" ale
+let g:ale_lint_on_enter = 0
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+nnoremap <silent> <leader>p <Plug>(ale_previous)
+nnoremap <silent> <leader>j <Plug>(ale_next_wrap)
+nnoremap <silent> <leader>k <Plug>(ale_prev_wrap)
+function! s:ale_list()
+  let g:ale_open_list = 1
+  call ale#Queue(0, 'lint_file')
+
+endfunction
+command! ALEList call s:ale_list()
+nnoremap <leader>m  :ALEList<CR>
+" autocmd MyAutoGroup FileType qf nnoremap <silent> <buffer> q :let g:ale_open_list = 0<CR>:q!<CR>
+" autocmd MyAutoGroup FileType help,qf,man,ref let b:ale_enabled = 0
+augroup MyAutoGroup
+  autocmd FileType qf nnoremap <silent> <buffer> q :let g:ale_open_list = 0<CR>:q!<CR>
+  autocmd FileType help,qf,man,ref let b:ale_enabled = 0
+augroup END
+
+" if dein#tap('lightline.vim')
+"   autocmd MyAutoGroup User ALELint call lightline#update()
+" endif
+
+let g:ale_sh_shellcheck_options = '-e SC1090,SC2059,SC2155,SC2164'
+
