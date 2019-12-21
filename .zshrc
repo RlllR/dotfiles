@@ -56,8 +56,9 @@ zshrc_alias() {
     alias zmv='noglob zmv -W'
     alias grep='grep --color=auto'
     alias diff='diff --color=auto'
-    alias ll='exa -l'
-    alias lla='exa -abgHliS'
+    alias ls='exa -l --color=auto'
+    alias ll='exa -albH --color=auto'
+    alias lla='exa -abghHliS --color=auto'
     alias ..='cd ..'
     alias ...='cd ../../'
     alias hist='history'
@@ -202,7 +203,7 @@ fshow() {
 jwm () {
     docker info &> /dev/null \
         || { echo 'Is the docker daemon running?'; return; }
-    local -r display=1
+    local -r display=2
     [[ -e "/tmp/.X11-unix/X${display}" ]] \
         || Xephyr -wr -resizeable ":${display}" &> /dev/null &
         docker run  \
@@ -213,8 +214,8 @@ jwm () {
 
 # Xephyr で Xmonad 起動(デバッグ用)
 xmdtest () {
-    local -r display=1
-    Xephyr :1 -ac -br -noreset & DISPLAY=:1.0 xmonad
+    local -r display=2
+    Xephyr :2 -ac -br -noreset & DISPLAY=:2.0 xmonad
 }
 
 
