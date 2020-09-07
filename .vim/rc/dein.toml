@@ -155,6 +155,10 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 
+# vim-lsp-settings
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
 [[plubins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 
