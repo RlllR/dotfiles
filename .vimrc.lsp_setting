@@ -9,8 +9,10 @@ endif
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
-  nmap <buffer> gd :tab sp <CR> <plug>(lsp-definition)
-  nmap <buffer> ge <plug>(lsp-peek-definition)
+  nmap <buffer> tt :tab sp <CR> <plug>(lsp-definition)
+  nmap <buffer> ts :vs <CR> <plug>(lsp-definition)
+  nmap <buffer> ti :sp <CR> <plug>(lsp-definition)
+  nmap <buffer> t <plug>(lsp-peek-definition)
   nmap <buffer> <f2> <plug>(lsp-rename)
   nnoremap <plug>(lsp-preview-close)
   nnoremap <plug>(lsp-preview-focus)

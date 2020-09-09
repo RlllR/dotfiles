@@ -68,65 +68,6 @@ nnoremap <leader>mn :MemoNew<CR>
 nnoremap <leader>mg :MemoGrep<CR>
 
 "----------------------------
-" lsp-completion
-"----------------------------
-" PHP
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'php-language-server',
-    \ 'cmd': {server_info->['php', expand('~/.vim/plugged/php-language-server/bin/php-language-server.php')]},
-    \ 'whitelist': ['php'],
-    \ })
-
-" Python
-" need 'pip install python-language-server'
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
-" TypeScript
-" need npm install -g typescript typescript-language-server or vim-plugin ryanolsonx/vim-lsp-typescript
-if executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript', 'typescript.tsx'],
-         })
-endif
-
-" "----------------------------
-" " vue
-" "----------------------------
-" autocmd BufNewFile,BufRead *.jsx,*.vue let b:jsx_ext_found = 1
-" autocmd BufNewFile,BufRead *.jsx,*.vue set filetype=javascript.jsx
-" " autocmd BufNewFile,BufRead *.js
-"   \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
-"
-" "----------------------------
-" " javascript syntax check
-" "----------------------------
-" "syntax hilightを自動で呼び出す
-" function! EnableJavascript()
-"   " Setup used libraries
-"   let g:used_javascript_libs = 'jquery,underscore,react,flux,jasmine,d3'
-"   let b:javascript_lib_use_jquery = 1
-"   let b:javascript_lib_use_underscore = 1
-"   let b:javascript_lib_use_react = 1
-"   let b:javascript_lib_use_flux = 1
-"   let b:javascript_lib_use_jasmine = 1
-"   let b:javascript_lib_use_d3 = 1
-"   " let g:flow#flowpath = /usr/local/bin/flow
-"   " let g:flow#autoclose = 1
-"   " let g:javascript_plugin_flow = 1
-" endfunction
-" " autocmd FileType javascript,javascript.jsx call EnableJavascript()
-" autocmd BufNewFile,BufRead javascript,javascript.jsx call EnableJavascript()
-
-"----------------------------
 " MarkdownPreview
 "----------------------------
 " nnoremap <silent><leader>p :MarkdownPreview<CR>
