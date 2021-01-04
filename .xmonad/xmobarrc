@@ -1,51 +1,47 @@
 -- vim: ft=haskell
 Config { font = "xft:Migu 1M:size=13"
+       , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:antialias=true:hinting=true"
+                           , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
+                           , "xft:FontAwesome:pixelsize=13"
+                           ]
        , bgColor = "#1c1c1c"
        , fgColor = "#404040"
-       , position = TopSize C 100 33
-       , lowerOnStart = False
-       , overrideRedirect = False
-       , border = BottomBM 0
        , borderColor = "#4e4e4e"
-       , commands = [ Run Network "eth0" [ "-t"       , "⇩<rx>  ⇧<tx> "
+       , border = NoBorder
+       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
+       -- , position = Top
+       , lowerOnStart = True
+       , hideOnStart = False
+       , persistent = True
+       , allDesktops = True
+       , overrideRedirect = False
+       , commands = [ Run Network "eth0" [ "-t"       , "<fn=1>\xf062</fn><rx> <fn=1>\xf063</fn><tx> "
                                          , "--Low"    , "40"
+                                         , "--normal" , "#b0bdbd"
                                          , "--High"   , "200"
+                                         , "--high"   , "#a5d6a7"
                                          , "-m"       , "4"
-                                         , "--normal" , "#b0bdbd"
-                                         , "--high"   , "#a5d6a7"
                                          ] 10
-                    , Run MultiCpu       [ "-t"       , "■  <total0>.<total1>.<total2>.<total3>.<total4>.<total5>.<total6>.<total7> "
+                    , Run Cpu            [ "-t"       , "<fn=1>\xf133</fn> cpu: (<total>%)"
                                          , "--Low"    , "40"
+                                         , "--normal" , "#b0bdbd"
                                          , "--High"   , "85"
-                                         , "-m"       , "2"
-                                         , "--normal" , "#b0bdbd"
                                          , "--high"   , "#a5d6a7"
+                                         , "-m"       , "2"
                                          ] 10
-                    , Run Memory         [ "-t"       , "□  <usedratio>%"
+                    , Run Memory         [ "-t"       , "<fn=1>\xf233</fn> mem: <used>M (<usedratio>%)"
                                          , "--Low"    , "40"
+                                         , "--normal" , "#b0bdbd"
                                          , "--High"   , "90"
-                                         , "-m"       , "2"
-                                         , "--normal" , "#b0bdbd"
                                          , "--high"   , "#a5d6a7"
+                                         , "-m"       , "2"
                                          ] 10
-                    , Run BatteryP       ["CMB1"]
-                                         [ "-t"       , "| <acstatus> "
-                                         , "--Low"    , "40"
-                                         , "--High"   , "80"
-                                         , "-low"     , "#ef9a9a"
-                                         , "--normal" , "#b0bdbd"
-                                         , "--"
-                                                , "-o" , "<left>% (<timeleft>)"
-                                                , "-O" , "Charging <left>%"
-                                                , "-i" , "<left>%"
-                                         ] 50
-                    , Run Date "%a %m/%d %H:%M" "date" 10
-                    , Run StdinReader
+                    , Run DiskU [("/", "<fn=1>\xf0c7</fn> hdd: <free> free")] [] 60
+                    , Run Date "<fn=1>\xf073</fn> %Y-%m-%d(%a) %H:%M:%S" "date" 10
+                    , Run Com "uname" ["-r"] "" 3600
+                    , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       -- 全角だとフォントが崩れて表示されないからとりあえず日付だけ
-       --, template = "%StdinReader% }{ %multicpu%%memory%%eth0%%battery%<fc=#ece391>%date%</fc>"
-       --, template = " %StdinReader% }{ [%eth0%] [%cpu%] [%memory%] [%battery%] [<fc=orenge>%date%</fc>] "
-       , template = "%StdinReader% }{ <fc=#ece391>%date%</fc>"
-       }
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm /> </action><fc=#666666>  |</fc> %UnsafeStdinReader% }{ <fc=#666666><fn=2>|</fn> </fc><fc=#b3afc2><fn=1></fn>  %uname% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#51afef> %disku% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#98be65> %eth0% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#c678dd><fn=1></fn>  %pacupdate% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc>"
+      }
